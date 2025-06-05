@@ -5,35 +5,33 @@ StatNG has the goal of overhauling the current data infrastructure in Nigeria.
 Technologies: Flask, SQlite
 
 statng/
-├── app/ # Core Flask application
-│ ├── **init**.py # App factory, init extensions (Flask, DB)
-│ ├── config.py # Config settings (dev/prod/keys)
-│ ├── models/ # SQLAlchemy models
-│ │ └── user.py # User model (admin, orgs)
-│ │ └── dataset.py # Dataset + metadata
-│ ├── routes/ # All views/routes (Jinja templates)
-│ │ └── main.py # Home & dashboard routes
-│ │ └── auth.py # Login/signup/logout routes
-│ │ └── admin.py # Dataset upload, admin panel
-│ ├── api/ # JSON APIs for AJAX & frontend use
-│ │ └── data_api.py # GET/POST data for charts
-│ │ └── auth_api.py # Login/signup API
-│ ├── templates/ # Jinja2 HTML templates
-│ │ └── layout.html # Base layout
-│ │ └── index.html # Landing page
-│ │ └── dashboard.html # Main data dashboard
-│ │ └── login.html # Auth pages
-│ │ └── admin_upload.html # Admin dataset upload UI
-│ ├── static/ # Static assets
-│ │ ├── css/
-│ │ ├── js/
-│ │ │ └── charts.js # Chart rendering scripts
-│ │ └── images/
-│ ├── forms/ # WTForms or form validation logic
-│ │ └── login_form.py
-│ │ └── upload_form.py
-│ ├── utils/ # Utility functions, processing, validation
-│ │ └── data_cleaner.py # Cleans CSVs
-│ │ └── chart_helpers.py # Prepares datasets for charts
-│ └── services/ # Optional: scraping, AI modules
-│ └── scr
+├── app/                         # Core Flask application package
+│   ├── __init__.py              # App factory & extension setup
+│   ├── config.py                # App config (dev/prod)
+│   ├── models/                  # SQLAlchemy models (User, Dataset, etc.)
+│   ├── routes/                  # Jinja-based route views (HTML)
+│   ├── api/                     # JSON APIs for frontend (data, auth)
+│   ├── templates/               # HTML templates (Jinja2)
+│   ├── static/                  # Static assets: JS, CSS, images
+│   ├── forms/                   # WTForms (login, upload)
+│   ├── utils/                   # Data processing, validation functions
+│   └── services/                # Optional scraping/NLP modules
+│
+├── instance/                    # Local SQLite DB lives here (if needed)
+│   └── statng.db
+│
+├── data/                        # Test/sample datasets
+│   ├── dummy_health.csv
+│   └── dummy_education.csv
+│
+├── tests/                       # Unit & integration tests
+│   ├── test_auth.py
+│   └── test_data_api.py
+│
+├── migrations/                  # Flask-Migrate directory (Alembic)
+├── .env                         # Environment variables (secret keys, DB URL)
+├── run.py                       # Entry point to launch the app
+├── requirements.txt             # Project dependencies
+├── README.md                    # Project overview and usage
+├── statng_tasks.csv             # (Optional) CSV for task tracking
+
